@@ -1,7 +1,7 @@
 # redis_compile
 small utility for compiling redis from source
 
-Made for debian-based systems.
+Made for debian-based systems, such as a debian build/compile host or dev machine.
 
 Example use:
 
