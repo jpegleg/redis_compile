@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Install the regular package first to get the systemd unit file setup.
+# Just know that you will have to redo your redis_compile as
+# an additional step during upgrades! Otherwise you will return 
+# to the packaged version. Comment this out if you want to handle that differently!
+# One option is to set the immutable bit on /usr/bin/redis-server, see the 
+# commented section at the very end. Using the immutable bit here could
+# cause automated patching to fail.
+
+aptitude install redis -y 
+
+# Args will pass the tarball name so we can change easily.
+# I am using redis-6.0.10.tar.gz at this time.
+
+mkdir BUILD
+wget https://download.redis.io/releases/"$1"
+tar xzvf "$1"
+dirnm=$(echo $1 | rev | cut -d'.' -f3- | rev)
+cd $dirnm
+aptitude install tcl8.6 -y
+aptitude install tcl-tls -y
+aptitude install libhiredis-dev -y
+aptitude install libsystemd-dev -y
+
+# If libhiredis error, then compile it from source as well...
+# git clone http://github.com/redis/hiredis
+# cd hiredis/
+# make
+# make install
+# echo "/usr/local/lib" > /etc/ld.so.conf.d/local.conf
+# ldconfig
+# cd ..
+
+make MALLOC=libc BUILD_TLS=yes USE_SYSTEMD=yes
+make test
+./utils/gen-test-certs.sh
+./runtest --tls
+cp src/redis-server /usr/bin/
+systemctl restart redis
+# Un-comment to set the immutable bit:
+# chattr +i /usr/bin/redis-server
