@@ -37,6 +37,6 @@ make test
 ./runtest --tls
 cp src/redis-server /usr/bin/
 systemctl restart redis
-rm -rf $dirnm $1
+cd .. && rm -rf $dirnm $1
 # Un-comment to set the immutable bit:
 # chattr +i /usr/bin/redis-server
