@@ -13,7 +13,6 @@ aptitude install redis -y
 # Args will pass the tarball name so we can change easily.
 # I am using redis-6.0.10.tar.gz at this time.
 
-mkdir BUILD
 wget https://download.redis.io/releases/"$1"
 tar xzvf "$1"
 dirnm=$(echo $1 | rev | cut -d'.' -f3- | rev)
@@ -38,5 +37,6 @@ make test
 ./runtest --tls
 cp src/redis-server /usr/bin/
 systemctl restart redis
+
 # Un-comment to set the immutable bit:
 # chattr +i /usr/bin/redis-server
