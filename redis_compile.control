@@ -1,4 +1,4 @@
-Package: redis-tls_rolling
+Package: RedisTLSRolling
 Depends: redis
 Version: 1.0
 Section: custom
