@@ -45,7 +45,7 @@ pipeline {
                 // make a tarball for pick up
                 sh "tar czvf /srv/redis_compile_build.tgz /srv/workspace/jpegleg-repo_redis_compile_main/ && touch /srv/redis_compile_pickup.lock"
                 sh "rm -rf /srv/debbuild/redisrolling-1.0.0/etc"
-                sh "mkdir -p /srv/debbuild/redisrolling-1.0.0/DEBIAN/; mkdir -p /srv/debbuild/redisrolling-1.0.0/etc/systemd/system/multi-user.target.wants/ 2>/dev/null; mkdir -p /srv/debbuild/redisrolling-1.0.0/usr/bin/ >/dev/null; mkdir /srv/debbuild/redisrolling-1.0.0/etc >/dev/null"
+                sh "mkdir -p /srv/debbuild/redisrolling-1.0.0/DEBIAN/; mkdir -p /srv/debbuild/redisrolling-1.0.0/etc/systemd/system/multi-user.target.wants/ 2>/dev/null; mkdir -p /srv/debbuild/redisrolling-1.0.0/usr/bin/ >/dev/null; mkdir -p /srv/debbuild/redisrolling-1.0.0/etc >/dev/null"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redis_compile.control /srv/debbuild/redisrolling-1.0.0/DEBIAN/control"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/postinst /srv/debbuild/redisrolling-1.0.0/DEBIAN/postinst"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.conf /srv/debbuild/redisrolling-1.0.0/etc/redisrolling.conf"
