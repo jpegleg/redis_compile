@@ -30,9 +30,7 @@ pipeline {
         stage('Execute systemd setup') {
             steps {
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.service /etc/systemd/system/multi-user.target.wants/redisrolling.service"
-                sh "systemctl disable redis 2>/dev/null"
-                sh "systemctl enable redisrolling"
-                sh "systemctl restart redisrolling 2>/dev/null"
+                sh "/usr/bin/redisrolling /etc/redis/redis.conf"
             }
             post {
                 success {
@@ -51,7 +49,7 @@ pipeline {
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.conf /srv/debbuild/redisrolling-1.0.0/etc/redisrolling.conf"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.service /etc/systemd/system/multi-user.target.wants/redisrolling.service"
                 sh "chmod +x /srv/debbuild/redisrolling-1.0.0/DEBIAN/postinst"
-                sh "cp  /usr/bin/redisrolling /srv/debbuild/redisrolling-1.0.0/usr/bin/redisrolling"
+                sh "cp /usr/bin/redisrolling /srv/debbuild/redisrolling-1.0.0/usr/bin/redisrolling"
                 sh "chmod +x /srv/debbuild/redisrolling-1.0.0/usr/bin/redisrolling"
                 sh "cd /srv/debbuild/ && tar czvf redisrolling-1.0.0.tar.gz redisrolling-1.0.0/ && dpkg -b ./redisrolling-1.0.0 ./redisrolling-1.0.0.deb"
             }
