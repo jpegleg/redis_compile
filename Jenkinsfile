@@ -33,7 +33,7 @@ pipeline {
                 // make a tarball for pick up
                 sh "tar czvf /srv/redis_compile_build.tgz /srv/workspace/jpegleg-repo_redis_compile_main/ && touch /srv/redis_compile_pickup.lock"              
                 sh "mkdir -p /srv/debbuild/redis_compile-1.0.0/DEBIAN/; mkdir -p /srv/debbuild/redis_compile-1.0.0/usr/bin/ >/dev/null"
-                sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redis_compile.control /srv/debbuild/redis_compile1.0.0/DEBIAN/control"
+                sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redis_compile.control /srv/debbuild/redis_compile-1.0.0/DEBIAN/control"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/postinst /srv/debbuild/redis_compile-1.0.0/DEBIAN/postinst"
                 sh "chmod +x /srv/debbuild/redis_compile-1.0.0/DEBIAN/postinst"
              
