@@ -1,6 +1,4 @@
 #!/bin/sh
-mkdir -p /usr/bin 2>/dev/null
-chmod +x /usr/bin/redis-server 2>/dev/null
 echo "$(date +%Y%m%d%H%M%S) $(hostname) used latest stable released redis package." > /var/log/REDIS_ROLLING_RELEASE_NOTICE.TXT
 echo "$(date +%Y%m%d%H%M%S) https://github.com/redis/redis/releases/tag/6.0.10" >> /var/log/REDIS_ROLLING_RELEASE_NOTICE.TXT
 echo "$(date +%Y%m%d%H%M%S) https://download.redis.io/releases/redis-6.0.10.tar.gz" >> /var/log/REDIS_ROLLING_RELEASE_NOTICE.TXT
