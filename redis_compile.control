@@ -1,4 +1,4 @@
-Package: redis-rolling
+Package: redis-tls_rolling
 Depends: redis
 Version: 1.0
 Section: custom
@@ -7,4 +7,4 @@ Architecture: all
 Essential: no
 Installed-Size: 10M
 Maintainer: https://github.com/jpegleg/
-Description: x86 GNU gcc compiled and tested redis from https://download.redis.io (using latest stable release tarball)
+Description: x86 GNU gcc compiled and full tested redis from https://download.redis.io using latest stable release tarball and TLS build flag.
