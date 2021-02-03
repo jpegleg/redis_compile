@@ -27,8 +27,9 @@ pipeline {
                 }
             }
         }
-        stage('Execute systemd setup') {
+        stage('Run test 2') {
             steps {
+                sh "pkill -9 redisrolling"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.service /etc/systemd/system/multi-user.target.wants/redisrolling.service"
                 sh "/usr/bin/redisrolling /etc/redis/redis.conf"
             }
@@ -47,7 +48,7 @@ pipeline {
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redis_compile.control /srv/debbuild/redisrolling-1.0.0/DEBIAN/control"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/postinst /srv/debbuild/redisrolling-1.0.0/DEBIAN/postinst"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.conf /srv/debbuild/redisrolling-1.0.0/etc/redisrolling.conf"
-                sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.service /etc/systemd/system/multi-user.target.wants/redisrolling.service"
+                sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.service /srv/debbuild/redisrolling-1.0.0/etc/systemd/system/multi-user.target.wants/redisrolling.service"
                 sh "chmod +x /srv/debbuild/redisrolling-1.0.0/DEBIAN/postinst"
                 sh "cp /usr/bin/redisrolling /srv/debbuild/redisrolling-1.0.0/usr/bin/redisrolling"
                 sh "chmod +x /srv/debbuild/redisrolling-1.0.0/usr/bin/redisrolling"
