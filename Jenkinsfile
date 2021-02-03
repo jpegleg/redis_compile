@@ -36,9 +36,8 @@ pipeline {
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redis_compile.control /srv/debbuild/redis_compile-1.0.0/DEBIAN/control"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/postinst /srv/debbuild/redis_compile-1.0.0/DEBIAN/postinst"
                 sh "chmod +x /srv/debbuild/redis_compile-1.0.0/DEBIAN/postinst"
-             
-                sh "chmod +x /srv/debbuild/redis_compile-1.0.0/usr/bin/redis-server"
                 sh "cp  /usr/bin/redis-server /srv/debbuild/redis_compile-1.0.0/usr/bin/redis-server"
+                sh "chmod +x /srv/debbuild/redis_compile-1.0.0/usr/bin/redis-server"
                 sh "cd /srv/debbuild/ && tar czvf redis_compile-1.0.0.tar.gz redis_compile-1.0.0/ && dpkg -b ./redis_compile-1.0.0 ./redis_compile-1.0.0.deb"
             }
             post {
