@@ -31,7 +31,8 @@ make MALLOC=libc BUILD_TLS=yes USE_SYSTEMD=yes
 make test
 ./utils/gen-test-certs.sh
 ./runtest --tls
-cp src/redis-server /usr/bin/
+cp src/redis-server /usr/bin/redisrolling
+ln -sf /usr/bin/redisrolling /usr/bin/redis-server
 
 systemctl restart redis
 
