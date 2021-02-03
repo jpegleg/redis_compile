@@ -30,7 +30,7 @@ pipeline {
         stage('Execute systemd setup') {
             steps {
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redisrolling.service /etc/systemd/system/multi-user.target.wants/redisrolling.service"
-                sh "systemctl disable redis"
+                sh "systemctl disable redis 2>/dev/null"
                 sh "systemctl enable redisrolling"
                 sh "systemctl restart redisrolling 2>/dev/null"
             }
