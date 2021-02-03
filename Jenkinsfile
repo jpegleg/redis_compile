@@ -9,6 +9,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 sh "cd /srv; rm -rf redis_compile"
+                sh "systemctl stop redis-server 2>/dev/null"
                 sh "rm -rf redis_compile; git clone https://github.com/jpegleg/redis_compile"
             }
             post {
