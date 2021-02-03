@@ -1,0 +1,5 @@
+#!/bin/sh
+mkdir -p /usr/bin 2>/dev/null
+chmod +x /usr/bin/redis-server 2>/dev/null
+echo "$(date +%Y%m%d%H%M%S) $(hostname) used latest stable released redis package." > /var/log/REDIS_ROLLING_RELEASE_NOTICE.TXT
+exit 0
