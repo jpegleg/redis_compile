@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Execute Build') {
             steps {
-                sh "cd redis_compile && chmod +x redis_compile && ./redis_compile"
+                sh "cd redis_compile && chmod +x redis_compile && ./redis_compile redis-6.0.10.tar.gz"
             }
             post {
                 success {
