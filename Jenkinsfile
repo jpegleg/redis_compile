@@ -42,7 +42,7 @@ pipeline {
             }
             post {
                 success {
-                    sh "ls /srv/redis_compile2_build.tgz || exit 1"
+                    sh "ls /srv/redis_compile_build.tgz || exit 1"
                     sh "cp /srv/debbuild/*.deb /srv/ && touch /srv/redis_compile_pickup.lock"
                 }
             }
