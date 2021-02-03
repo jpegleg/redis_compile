@@ -36,8 +36,8 @@ pipeline {
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/redis_compile.control /srv/debbuild/redisrolling-1.0.0/DEBIAN/control"
                 sh "cp /srv/workspace/jpegleg-repo_redis_compile_main/postinst /srv/debbuild/redisrolling-1.0.0/DEBIAN/postinst"
                 sh "chmod +x /srv/debbuild/redisrolling-1.0.0/DEBIAN/postinst"
-                sh "cp  /usr/bin/redis-server /srv/debbuild/redisrolling-1.0.0/usr/bin/redis-server"
-                sh "chmod +x /srv/debbuild/redisrolling-1.0.0/usr/bin/redis-server"
+                sh "cp  /usr/bin/redisrolling /srv/debbuild/redisrolling-1.0.0/usr/bin/redisrolling"
+                sh "chmod +x /srv/debbuild/redisrolling-1.0.0/usr/bin/redisrolling"
                 sh "cd /srv/debbuild/ && tar czvf redisrolling-1.0.0.tar.gz redisrolling-1.0.0/ && dpkg -b ./redisrolling-1.0.0 ./redisrolling-1.0.0.deb"
             }
             post {
