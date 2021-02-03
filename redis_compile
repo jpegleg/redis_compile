@@ -21,7 +21,7 @@ aptitude install tcl8.6 -y
 aptitude install pkg-config -y
 aptitude install tcl-tls -y
 aptitude install libhiredis-dev -y
-aptitude install libsystemd-dev -y
+
 # If libhiredis error, then compile it from source as well...
 # git clone http://github.com/redis/hiredis
 # cd hiredis/
